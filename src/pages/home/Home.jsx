@@ -46,11 +46,14 @@ const Home = () => {
         <hr />
         <Row>
           <Col className="d-flex gap-2 flex-wrap">
-            {searchedBooks.map((book) => (
-              <Link key={book._id} to={"/book/" + book._id}>
-                <CustomCard {...book} />
-              </Link>
-            ))}
+            {searchedBooks.map(
+              (book) =>
+                book.status === "active" && (
+                  <Link key={book._id} to={"/book/" + book._id}>
+                    <CustomCard {...book} />
+                  </Link>
+                )
+            )}
           </Col>
         </Row>
       </Container>

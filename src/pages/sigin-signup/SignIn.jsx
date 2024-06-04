@@ -6,20 +6,23 @@ import { toast } from "react-toastify";
 import { loginUser } from "../../features/users/userAxios";
 import { getUserObj, userSignInAction } from "../../features/users/userAction";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const emailRef = useRef("");
   const passRef = useRef("");
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.userInfo);
-  console.log(user);
+  console.log(location);
+
+  const sendTo = location?.state?.from?.location?.pathname || "/dashboard";
 
   useEffect(() => {
-    user?._id && navigate("/dashboard");
-  }, [user?._id, navigate]);
+    user?._id && navigate(sendTo);
+  }, [user?._id, navigate, sendTo]);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +44,6 @@ const SignIn = () => {
       required: true,
       placeholder: "Sam@email.com",
       inputRef: emailRef,
-      value: "a@a.com",
     },
     {
       label: "Password",
@@ -50,7 +52,6 @@ const SignIn = () => {
       required: true,
       placeholder: "*******",
       inputRef: passRef,
-      value: "12345",
     },
   ];
 

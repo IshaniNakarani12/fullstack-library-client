@@ -20,12 +20,14 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllBooksAction } from "./features/books/bookAction";
 import BookLanding from "./pages/book/BookLanding";
+import { autoLogin } from "./features/users/userAction";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllBooksAction());
+    dispatch(autoLogin());
   }, [dispatch]);
   return (
     <div>

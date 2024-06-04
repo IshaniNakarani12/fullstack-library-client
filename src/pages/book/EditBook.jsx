@@ -23,7 +23,7 @@ const EditBook = () => {
     //fetch single book
     if (_id !== form?._id) {
       dispatch(getSingleBookAction(_id));
-      setForm(selectedBook);
+      selectedBook?._id && setForm(selectedBook);
     }
   }, [dispatch, _id, selectedBook, setForm, form]);
 
@@ -57,7 +57,7 @@ const EditBook = () => {
                 : "mb-3 text-danger"
             }
           />
-          {inputFields.map((input, i) => (
+          {inputFields?.map((input, i) => (
             <CustomInput
               disabled={input.name === "isbn"}
               key={i}

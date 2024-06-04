@@ -12,21 +12,21 @@ export const postNewBurrow = async (obj) => {
   return apiProcesser(axiosObj);
 };
 
-// export const fetchBurrows = async (isPrivate) => {
-//   const axiosObj = {
-//     method: "get",
-//     url: isPrivate ? burrowEP + "/all" : burrowEP,
-//     isPrivate: true,
-//   };
-//   return apiProcesser(axiosObj);
-// };
-// export const fetchSingleBurrow = async (_id) => {
-//   const axiosObj = {
-//     method: "get",
-//     url: burrowEP + "/" + _id,
-//   };
-//   return apiProcesser(axiosObj);
-// };
+export const fetchBurrows = async () => {
+  const axiosObj = {
+    method: "get",
+    url: burrowEP,
+    isPrivate: true,
+  };
+  return apiProcesser(axiosObj);
+};
+export const fetchSingleBurrow = async (_id) => {
+  const axiosObj = {
+    method: "get",
+    url: burrowEP + "/" + _id,
+  };
+  return apiProcesser(axiosObj);
+};
 
 // export const updateABurrow = async (obj) => {
 //   const axiosObj = {

@@ -1,24 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  books: [],
-  selectedBook: {},
+  burrows: [],
+  selectedBurrow: {},
 };
 
-const bookSlice = createSlice({
-  name: "book",
+const burrowlice = createSlice({
+  name: "burrows",
   initialState,
   reducers: {
-    setBooks: (state, { payload }) => {
-      state.books = payload || [];
+    setBurrows: (state, { payload }) => {
+      state.burrows = payload || [];
     },
-    setSelectedBook: (state, { payload }) => {
-      state.selectedBook = payload;
+    setSelectedBurrow: (state, { payload }) => {
+      state.selectedBurrow = payload;
     },
   },
 });
 
-const { reducer, actions } = bookSlice;
+const { reducer, actions } = burrowlice;
 
-export const { setBooks, setSelectedBook } = actions;
+export const { setBurrows, setSelectedBurrow } = actions;
 export default reducer;
