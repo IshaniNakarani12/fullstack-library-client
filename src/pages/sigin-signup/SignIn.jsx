@@ -44,6 +44,7 @@ const SignIn = () => {
       required: true,
       placeholder: "Sam@email.com",
       inputRef: emailRef,
+      value: "s@s.com",
     },
     {
       label: "Password",
@@ -52,6 +53,7 @@ const SignIn = () => {
       required: true,
       placeholder: "*******",
       inputRef: passRef,
+      value: "12345",
     },
   ];
 

@@ -28,12 +28,12 @@ export const fetchSingleBurrow = async (_id) => {
   return apiProcesser(axiosObj);
 };
 
-// export const updateABurrow = async (obj) => {
-//   const axiosObj = {
-//     method: "put",
-//     url: burrowEP,
-//     data: obj,
-//     isPrivate: true,
-//   };
-//   return apiProcesser(axiosObj);
-// };
+export const returnBook = async (obj) => {
+  const axiosObj = {
+    method: "put",
+    url: burrowEP,
+    data: obj,
+    isPrivate: true,
+  };
+  return apiProcesser(axiosObj);
+};
