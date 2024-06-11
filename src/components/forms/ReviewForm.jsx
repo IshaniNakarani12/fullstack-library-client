@@ -14,7 +14,7 @@ export const ReviewForm = ({ burrow, setBurrow }) => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
-    const { _id, userId, bookId, userName, bookTitle } = burrow;
+    const { _id, userId, bookId, userName, bookTitle, thumbnail } = burrow;
     const obj = {
       ...form,
       ratings,
@@ -23,6 +23,7 @@ export const ReviewForm = ({ burrow, setBurrow }) => {
       bookId,
       userName,
       bookTitle,
+      thumbnail,
     };
 
     if (window.confirm("Are you sure, you want to leave this review?")) {

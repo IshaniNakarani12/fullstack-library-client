@@ -14,6 +14,7 @@ const BookLanding = () => {
 
   const { books } = useSelector((state) => state.bookInfo);
   const { user } = useSelector((state) => state.userInfo);
+  const { pubReviews } = useSelector((state) => state.reviewInfo);
 
   const book = books.find((itme) => itme._id === _id);
   if (!book?._id) {
@@ -41,6 +42,15 @@ const BookLanding = () => {
       );
     }
   };
+
+  // reviews only for this book
+  const bookReviews = pubReviews.filter((item) => item.bookId === _id);
+
+  const avgRatings = bookReviews.length
+    ? bookReviews.reduce((acc, item) => acc + item.ratings, 0) /
+      bookReviews.length
+    : 0;
+
   return (
     <DefaultLayout>
       <Row className="g-2">
@@ -54,11 +64,8 @@ const BookLanding = () => {
           <p>
             {author} - {publishedYear}
           </p>
-
-          <Stars stars={3} />
-
+          <Stars stars={avgRatings} totalReviews={bookReviews.length} />
           <p className="mt-5">{description.slice(0, 130)}...</p>
-
           <div className="d-grid">
             {user?._id ? (
               <Button disabled={!isAvailable} onClick={handleOnBookBurrow}>
@@ -95,7 +102,7 @@ const BookLanding = () => {
             </Tab>
 
             <Tab eventKey="reviews" title="Reviews">
-              <ReviewBlock />
+              <ReviewBlock pubReviews={pubReviews} />
             </Tab>
           </Tabs>
 

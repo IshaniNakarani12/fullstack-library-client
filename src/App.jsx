@@ -15,12 +15,13 @@ import StudentsList from "./pages/user/StudentsList";
 import AllBurrowList from "./pages/burrow/AllBurrowList";
 import MyBurrow from "./pages/burrow/MyBurrow";
 import UserProfile from "./pages/user/UserProfile";
-import AdminList from "./pages/user/AdminList";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllBooksAction } from "./features/books/bookAction";
 import BookLanding from "./pages/book/BookLanding";
 import { autoLogin } from "./features/users/userAction";
+import Reviews from "./pages/reviews/Reviews";
+import { getReviews } from "./features/reviews/reviewAction";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
   useEffect(() => {
     dispatch(getAllBooksAction());
     dispatch(autoLogin());
+    dispatch(getReviews());
   }, [dispatch]);
   return (
     <div>
@@ -45,7 +47,8 @@ function App() {
         <Route path="admin/book/edit/:_id" element={<EditBook />} />
         <Route path="admin/students" element={<StudentsList />} />
         <Route path="admin/all-burrows" element={<AllBurrowList />} />
-        <Route path="admin/admins" element={<AdminList />} />
+
+        <Route path="admin/reviews" element={<Reviews />} />
 
         {/* both admin and students  */}
         <Route path="dashboard" element={<Dashobard />} />
